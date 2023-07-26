@@ -1,0 +1,21 @@
+<table>
+<tr>
+<% count=0 %>
+<% @clothes_gallery.each do |cloth|%>
+
+<% if (count % 3) == 0%>
+</tr>
+<tr>
+<% end %>
+<% count+=1 %>
+<td><%= image_tag cloth.store_image ,:height=>"100",:width=>"100" %><br />
+<%= cloth.name %><br />
+Color :<%= cloth.color %><br />
+Brand :<%= cloth.brand %><br />
+Size :<%= cloth.size %><br />
+Description :<%= cloth.description %><br />
+Price :<%= cloth.price %><br />
+ </td>
+<% end %>
+</tr>
+</table>
