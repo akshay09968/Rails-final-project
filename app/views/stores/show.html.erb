@@ -2,14 +2,23 @@
 
 <%= render @store %>
 
-<div>
+<div style="text-align:center">
 
   <p>
+  <br>
   <%= image_tag @store.store_image,height: "150",width: "150" %>
   </p>
 
-  <%= link_to "Edit this store", edit_store_path(@store) %> |
-  <%= link_to "Back to stores", stores_path %>
+  <div style="display: inline-block;">
+  <%= button_to "Edit this store", edit_store_path(@store), method: :get, class: "btn btn-info" %>
+</div>
 
-  <%= button_to "Destroy this store", @store, method: :delete %>
+<div style="display: inline-block;">
+  <%= button_to "Back to stores", stores_path, class: "btn btn-info" %>
+</div>
+
+<br><br>
+
+  <%= button_to "Destroy this store", @store, method: :delete, class: "btn btn-success" %>
+
 </div>

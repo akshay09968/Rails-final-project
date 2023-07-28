@@ -1,21 +1,62 @@
-<table>
-<tr>
-<% count=0 %>
-<% @clothes_gallery.each do |cloth|%>
+<style>
+  /* Custom CSS for the heading and the table */
+  .title {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+  }
 
-<% if (count % 3) == 0%>
-</tr>
-<tr>
-<% end %>
-<% count+=1 %>
-<td><%= image_tag cloth.store_image ,:height=>"100",:width=>"100" %><br />
-<%= cloth.name %><br />
-Color :<%= cloth.color %><br />
-Brand :<%= cloth.brand %><br />
-Size :<%= cloth.size %><br />
-Description :<%= cloth.description %><br />
-Price :<%= cloth.price %><br />
- </td>
-<% end %>
-</tr>
-</table>
+  /* Custom CSS for the features items section */
+  .features-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  /* Custom CSS for the product item */
+  .col-sm-4 {
+    margin-bottom: 30px;
+  }
+
+  .productinfo h2 {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+
+  .productinfo p {
+    margin-bottom: 5px;
+  }
+</style>
+
+<h2 class="title">Features Items</h2>
+
+<div class="features-items"><!-- features_items -->
+  <% @clothes_gallery.each do |cloth| %>
+    <div class="col-sm-4">
+      <div class="product-image-wrapper">
+        <div class="single-products">
+          <div class="productinfo text-center">
+            <%= image_tag cloth.store_image, height: "410", width: "20" if cloth.store_image.attached?%><br />
+            <h2>Rs. <%= cloth.price %></h2>
+            <p><%= cloth.name %></p>
+            <p><%= cloth.brand %></p>
+            <p><%= cloth.size %></p>
+            <p><%= cloth.description %></p>
+            
+          </div>
+          <div class="product-overlay">
+            <div class="overlay-content">
+              <h1><%= cloth.name %></h1>
+              <h2><%= cloth.brand %></h2>
+              <h3><%= cloth.size %></h3>
+              <h4><%= cloth.description %></h4>
+              <%= button_to 'Add to Cart', line_items_path(:store_id => cloth.id) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

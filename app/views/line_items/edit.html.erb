@@ -1,0 +1,35 @@
+<style>
+  body {
+    background-color: #f7f7f7; /* Optional: Adding a light background color to the page */
+  }
+
+  .editing-line-item {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .actions {
+    margin-top: 20px;
+  }
+</style>
+
+<h1 class="text-center">Editing line item</h1>
+
+<div class="editing-line-item">
+  <%= render "form", line_item: @line_item %>
+
+  <div class="actions">
+    <%= link_to "Show this line item", @line_item, class: "btn btn-primary" %> |
+    <%= link_to "Back to line items", line_items_path, class: "btn btn-secondary" %>
+  </div>
+</div>

@@ -1,10 +1,38 @@
-<h1>Editing store</h1>
+<style>
+  /* Custom CSS for the container */
+  .center-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    background-image: url('/assets/home/backback.jpg'); /* Replace with the actual path to your background image */
+    background-size: cover;
+    padding: 20px; /* Add padding to create some space between the content and the background edges */
+  }
 
-<%= render "form", store: @store %>
+  /* Optional: Style the "Editing store" heading */
+  h1 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
 
-<br>
+  /* Optional: Style the link section */
+  .link-section {
+    margin-top: 20px;
+  }
 
-<div>
-  <%= link_to "Show this store", @store %> |
-  <%= link_to "Back to stores", stores_path %>
+  .link-section a {
+    margin: 0 10px;
+  }
+</style>
+
+<div class="center-container">
+  <h1>Editing store</h1>
+
+  <%= render "form", store: @store %>
+
+  <div class="link-section">
+    <%= link_to "Show this store", @store %> |
+    <%= link_to "Back to stores", stores_path %>
+  </div>
 </div>

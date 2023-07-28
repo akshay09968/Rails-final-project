@@ -1,4 +1,21 @@
-<div id="<%= dom_id store %>">
+<style>
+  /* CSS styles for the store details container */
+  #<%= dom_id(store) %> {
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 400px; /* Optional: Set a max width for the container */
+    margin: 0 auto; /* Center-align the container */
+  }
+
+  /* CSS styles for the strong tag */
+  #<%= dom_id(store) %> strong {
+    color: #333;
+  }
+</style>
+
+<div id="<%= dom_id(store) %>">
   <p>
     <strong>Name:</strong>
     <%= store.name %>
@@ -28,5 +45,4 @@
     <strong>Price:</strong>
     <%= store.price %>
   </p>
-
 </div>

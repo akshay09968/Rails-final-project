@@ -1,0 +1,41 @@
+<style>
+  body {
+    background-color: #f7f7f7; /* Optional: Adding a light background color to the page */
+  }
+
+  .cart-details {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn-group {
+    margin-top: 10px;
+  }
+
+  .btn-group > a,
+  .btn-group > button {
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+  }
+</style>
+
+<h1 class="text-center">Cart Details</h1>
+
+<div class="cart-details">
+  <p style="color: green;"><%= notice %></p>
+
+  <%= render @line_item %>
+
+  <div class="btn-group">
+    <%= link_to "Edit this line item", edit_line_item_path(@line_item), class: "btn btn-primary" %>
+    <%= link_to "Back to line items", line_items_path, class: "btn btn-secondary" %>
+    <%= button_to "Destroy this line item", @line_item, method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure you want to delete this line item?" } %>
+  </div>
+</div>

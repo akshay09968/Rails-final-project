@@ -1,0 +1,61 @@
+<style>
+  body {
+    background-image: url('/assets/home/backback.jpg'); /* Replace '/path/to/background-image.jpg' with the actual image path */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  /* Custom CSS for the table */
+  .line-items-table {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .line-items-table th,
+  .line-items-table td {
+    text-align: center;
+  }
+
+  .line-items-actions {
+    text-align: center;
+    margin-top: 20px;
+  }
+</style>
+
+<p style="color: green;"><%= notice %></p>
+
+<div class="container">
+  <h1 class="text-center">Line items</h1>
+
+  <table class="table table-bordered line-items-table">
+    <thead>
+      <tr>
+        <th>Cart</th>
+        <th>Store</th>
+        <th>Quantity</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @line_items.each do |line_item| %>
+        <tr>
+          <td><%= line_item.cart_id %></td>
+          <td><%= line_item.store_id %></td>
+          <td><%= line_item.quantity %></td>
+          <td>
+            <%= link_to "Show this line item", line_item, class: "btn btn-primary btn-sm" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="line-items-actions">
+    <%= link_to "New line item", new_line_item_path, class: "btn btn-primary" %>
+    <br>
+    <%= link_to "Click to checkout", gallery_checkout_path, class: "btn btn-primary" %>
+  </div>
+</div>

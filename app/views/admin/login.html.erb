@@ -1,16 +1,36 @@
 <%= flash[:notice] %>
 
-<h1>Admin Login</h1>
-<%= form_with url: "/admin/login", method: :post do |form| %>
-<div class="field">
-    <%= form.label :username %>
-    <%= form.text_field :username %>
-  </div>
-<div class="field">
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
-  <div class="actions">
-    <%= form.submit "Admin Login" %>
-  </div>
-<% end %>
+<br>
+<style>
+  .login-container {
+    background-image: url('/assets/home/backback.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh; /* Set the height to cover the entire viewport */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+
+<div class="login-container">
+<h1 style="text-align:center; font-size: 50px; font-weight: bold;">
+  Admin Login
+</h1>
+  <br>
+  <%= form_with url: "/admin/login", method: :post do |form| %>
+    <div class="field">
+      <%= form.label :username %>
+      <%= form.text_field :username  %>
+    </div>
+    <div class="field">
+      <%= form.label :password  %>
+      <%= form.password_field :password  %>
+    </div>
+    <div class="actions" style="text-align:center">
+      <%= form.submit "Admin Login" %>
+    </div>
+  <% end %>
+</div>

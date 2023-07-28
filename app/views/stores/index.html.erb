@@ -1,14 +1,59 @@
+<style>
+  body {
+    /* Set general background styles here if needed */
+  }
+
+  /* Custom CSS for the table */
+  .custom-table {
+    border: 2px solid #000; /* Set border width and color */
+  }
+
+  .custom-table th,
+  .custom-table td {
+    border: 2px solid #000; /* Set border width and color */
+    font-weight: bold; /* Make the text inside th and td elements bold */
+  }
+
+  /* Background image style for the form container */
+  .form-container {
+    background-image: url('/assets/home/backback.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+</style>
+
 <p style="color: green"><%= notice %></p>
 
-<h1>Stores</h1>
+<% if session[:admin] %>
+  <div class="container">
+    <h1 style="text-align:center">Stores</h1>
 
-<div id="stores">
-  <% @stores.each do |store| %>
-    <%= render store %>
-    <p>
-      <%= link_to "Show this store", store %>
+    <table class="table table-bordered custom-table"> <!-- Add the custom-table class to apply the styles -->
+      <thead>
+        <tr>
+          <th><strong>Store Name</strong></th>
+          <th><strong>Actions</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @stores.each do |store| %>
+          <tr>
+            <td><%= store.name %></td>
+            <td>
+              <%= link_to "Show this store", store, class: "btn btn-primary btn-sm" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <p style="text-align:center;">
+      <%= link_to "New clothing", new_store_path, class: "btn btn-success" %>
     </p>
-  <% end %>
-</div>
-
-<%= link_to "New store", new_store_path %>
+  </div>
+<% else %>
+  <div class="container form-container"> <!-- Add the form-container class here -->
+    <%= link_to 'Please Login first', admin_login_path, class: "btn btn-success" %>
+  </div>
+<% end %>
